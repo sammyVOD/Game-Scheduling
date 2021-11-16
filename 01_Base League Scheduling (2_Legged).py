@@ -4,6 +4,7 @@ import numpy as np
 import string
 import random
 from datetime import timedelta, date
+from itertools import permutations
 
 # How many teams do you want to build a schedule for
 number_of_teams = input('How many teams make up this tournament: ')
@@ -19,10 +20,15 @@ number_of_teams = len(teams)
 # MAP THE TEAMS AGAINST EACH OTHER
 game_unsorted = []
 
-for i in teams:
-    for j in teams:
-        if i != j:
-            game_unsorted.append(i + ' vs ' + j)
+# for i in teams:
+#     for j in teams:
+#         if i != j:
+#             game_unsorted.append(i + ' vs ' + j)
+
+# UPDATING THIS TO USING PERMUTATIONS INSTEAD
+matching = permutations(teams, 2)
+for i, (team1, team2) in enumerate(matching, 1):
+    game_unsorted.append(team1 + ' vs ' + team2)
 
 # pick the games randomly
 game_unsorted = random.sample(game_unsorted, len(game_unsorted))
