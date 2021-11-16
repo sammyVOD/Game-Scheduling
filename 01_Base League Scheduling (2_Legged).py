@@ -30,6 +30,7 @@ matching = permutations(teams, 2)
 for i, (team1, team2) in enumerate(matching, 1):
     game_unsorted.append(team1 + ' vs ' + team2)
 
+
 # pick the games randomly
 game_unsorted = random.sample(game_unsorted, len(game_unsorted))
 
